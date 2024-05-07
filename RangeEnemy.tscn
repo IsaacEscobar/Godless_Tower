@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://6cascr6us76k"]
+
+[ext_resource type="Script" path="res://RangeEnemy.gd" id="1_6jgg5"]
+[ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="2_7xfl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybhd0"]
+size = Vector2(63, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msas2"]
+size = Vector2(79.1789, 86.999)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crbn4"]
+radius = 467.518
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbakc"]
+radius = 282.016
+
+[node name="RangeEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_6jgg5")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(3.5, 3.58333)
+texture = ExtResource("2_7xfl3")
+hframes = 11
+vframes = 12
+frame = 55
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_ybhd0")
+
+[node name="DamageZone" type="Area2D" parent="."]
+scale = Vector2(1.1, 1.1)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+position = Vector2(-1.36364, 0.454538)
+scale = Vector2(0.93, 0.93)
+shape = SubResource("RectangleShape2D_msas2")
+
+[node name="PursueRange" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PursueRange"]
+shape = SubResource("CircleShape2D_crbn4")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_cbakc")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="DamageZone" to="." method="_on_damage_zone_area_entered"]
+[connection signal="area_entered" from="PursueRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="PursueRange" to="." method="_on_attack_range_area_exited"]

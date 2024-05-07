@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cygn0tm7jpwhj"]
+
+[ext_resource type="Script" path="res://CharacterMovement.gd" id="1_7dsck"]
+[ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="1_8eljc"]
+
+[sub_resource type="Animation" id="Animation_kh6ca"]
+resource_name = "WalkLeft"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [66, 68, 70]
+}
+
+[sub_resource type="Animation" id="Animation_etob0"]
+resource_name = "WalkRight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [66, 68, 70]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8bj2p"]
+_data = {
+"WalkLeft": SubResource("Animation_kh6ca"),
+"WalkRight": SubResource("Animation_etob0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2wtq"]
+size = Vector2(51, 81)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_7dsck")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2, 9.53674e-07)
+scale = Vector2(2.91667, 3.35417)
+texture = ExtResource("1_8eljc")
+flip_h = true
+hframes = 11
+vframes = 12
+frame = 66
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8bj2p")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_e2wtq")

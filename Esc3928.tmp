@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ng2k6rvj51np"]
+
+[ext_resource type="Texture2D" uid="uid://d1k1pxld7vapt" path="res://icon.svg" id="1_b8oof"]
+[ext_resource type="Texture2D" uid="uid://inw2qalsv7ai" path="res://Bricks.jpg" id="2_m0awf"]
+[ext_resource type="Texture2D" uid="uid://jc43evy1loyw" path="res://Charmander.png" id="3_7ueni"]
+[ext_resource type="Script" path="res://CharmanderMovementScript.gd" id="3_eod52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbf8w"]
+size = Vector2(125, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qd81"]
+size = Vector2(1151, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ki54"]
+size = Vector2(84, 59)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bloque" type="RigidBody2D" parent="."]
+position = Vector2(-1, 0)
+mass = 0.5
+gravity_scale = 0.01
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloque"]
+position = Vector2(248, 138)
+shape = SubResource("RectangleShape2D_tbf8w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bloque"]
+position = Vector2(248, 138)
+texture = ExtResource("1_b8oof")
+
+[node name="Piso" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
+position = Vector2(577.5, 603)
+shape = SubResource("RectangleShape2D_5qd81")
+debug_color = Color(0, 0.145098, 0.0627451, 0.717647)
+
+[node name="Bricks" type="Sprite2D" parent="Piso"]
+position = Vector2(578, 601.688)
+scale = Vector2(2.42405, 0.266374)
+texture = ExtResource("2_m0awf")
+
+[node name="Charmander" type="CharacterBody2D" parent="."]
+position = Vector2(464, 123)
+script = ExtResource("3_eod52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Charmander"]
+position = Vector2(160, 42.5)
+shape = SubResource("RectangleShape2D_7ki54")
+
+[node name="Charmander" type="Sprite2D" parent="Charmander"]
+position = Vector2(168, 54)
+scale = Vector2(0.0717857, 0.0571429)
+texture = ExtResource("3_7ueni")

@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://cygn0tm7jpwhj"]
+
+[ext_resource type="Script" path="res://CharacterFunctions.gd" id="1_prwse"]
+[ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="2_p1umd"]
+[ext_resource type="PackedScene" uid="uid://m2om3il4r033" path="res://Muros.tscn" id="3_l1v15"]
+[ext_resource type="PackedScene" uid="uid://bpexvensr43dv" path="res://enemy.tscn" id="4_im81o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljh1c"]
+bg_color = Color(0.72549, 0.137255, 0.168627, 1)
+
+[sub_resource type="Animation" id="Animation_kh6ca"]
+resource_name = "Walking"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [66, 68, 70, 66]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8bj2p"]
+_data = {
+"Walking": SubResource("Animation_kh6ca")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6rq2"]
+size = Vector2(61, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2wtq"]
+size = Vector2(49.0385, 74.0385)
+
+[node name="World" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1391.0
+offset_bottom = 928.0
+color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 291.0
+offset_bottom = 67.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ljh1c")
+value = 100.0
+show_percentage = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(52, 63)
+script = ExtResource("1_prwse")
+
+[node name="Sprite" type="Sprite2D" parent="Player"]
+position = Vector2(2, 9.53674e-07)
+scale = Vector2(2.91667, 3.35417)
+texture = ExtResource("2_p1umd")
+flip_h = true
+hframes = 11
+vframes = 12
+frame = 66
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_8bj2p")
+}
+
+[node name="Timer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="Player"]
+unique_name_in_owner = true
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_c6rq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1.5, -1.5)
+scale = Vector2(1.04, 1.04)
+shape = SubResource("RectangleShape2D_e2wtq")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.8, 0.8)
+
+[node name="Muro" parent="." instance=ExtResource("3_l1v15")]
+position = Vector2(237, 261)
+
+[node name="Muro2" parent="." instance=ExtResource("3_l1v15")]
+position = Vector2(738, 255)
+
+[node name="Enemy" parent="." instance=ExtResource("4_im81o")]
+position = Vector2(941, 91)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_im81o")]
+position = Vector2(945, 417)
+
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]

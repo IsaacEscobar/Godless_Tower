@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cygn0tm7jpwhj"]
+
+[ext_resource type="Script" path="res://CharacterFunctions.gd" id="1_prwse"]
+[ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="2_p1umd"]
+[ext_resource type="Texture2D" uid="uid://b1huo4uaef8fn" path="res://Axe.png" id="3_skw3r"]
+
+[sub_resource type="Animation" id="Animation_kh6ca"]
+resource_name = "Walking"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [66, 68, 70, 66]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8bj2p"]
+_data = {
+"Walking": SubResource("Animation_kh6ca")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2wtq"]
+size = Vector2(51, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68th0"]
+
+[sub_resource type="Animation" id="Animation_322dw"]
+resource_name = "ThrowingAxe"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82st1"]
+_data = {
+"ThrowingAxe": SubResource("Animation_322dw")
+}
+
+[node name="Node" type="Node"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(52, 63)
+script = ExtResource("1_prwse")
+
+[node name="Sprite" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(2, 9.53674e-07)
+scale = Vector2(2.91667, 3.35417)
+texture = ExtResource("2_p1umd")
+flip_h = true
+hframes = 11
+vframes = 12
+frame = 66
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_8bj2p")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_e2wtq")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(94, 62)
+shape = SubResource("RectangleShape2D_68th0")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(93.75, 62.25)
+scale = Vector2(0.0249155, 0.0215372)
+texture = ExtResource("3_skw3r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D2"]
+libraries = {
+"": SubResource("AnimationLibrary_82st1")
+}

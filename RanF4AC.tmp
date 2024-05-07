@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://6cascr6us76k"]
+
+[ext_resource type="Script" path="res://RangeEnemy.gd" id="1_6jgg5"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://siuuu/slime.tscn" id="2_v07uj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pk4bn"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8e2i"]
+radius = 52.5209
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crbn4"]
+radius = 295.002
+
+[node name="RangeEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_6jgg5")
+metadata/_edit_group_ = true
+
+[node name="Mage" parent="." instance=ExtResource("2_v07uj")]
+position = Vector2(-1, 33)
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+shape = SubResource("CircleShape2D_pk4bn")
+
+[node name="DamageZone" type="Area2D" parent="."]
+scale = Vector2(1.1, 1.1)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+position = Vector2(-1.475, 3.805)
+scale = Vector2(0.93, 0.93)
+shape = SubResource("CircleShape2D_j8e2i")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_crbn4")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="DamageZone" to="." method="_on_damage_zone_area_entered"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]

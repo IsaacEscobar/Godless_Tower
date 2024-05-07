@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ng2k6rvj51np"]
+
+[ext_resource type="Script" path="res://CharacterFunctions.gd" id="1_74luj"]
+[ext_resource type="PackedScene" uid="uid://cygn0tm7jpwhj" path="res://CharacterMovement.tscn" id="1_g2m0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ki54"]
+size = Vector2(52, 81)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_g2m0o")]
+position = Vector2(93, 58)
+script = ExtResource("1_74luj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-3, -0.5)
+shape = SubResource("RectangleShape2D_7ki54")
