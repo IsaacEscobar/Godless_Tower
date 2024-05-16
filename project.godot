@@ -62,3 +62,4 @@ shoot={
 2d_physics/layer_3="Projectile"
 2d_physics/layer_4="Background"
 2d_physics/layer_5="MobRange"
+2d_physics/layer_6="Enemy Projectile"

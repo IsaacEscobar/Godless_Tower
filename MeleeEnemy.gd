@@ -17,13 +17,11 @@ func _physics_process(delta):
 		velocity = Vector2(0.0,0.0)
 	move_and_slide()
 
-
 func _on_attack_range_area_entered(area):
 	onSight = true
 
 func _on_attack_range_area_exited(area):
 	onSight = false
-
 
 func _on_damage_zone_area_entered(area):
 	health -= 5

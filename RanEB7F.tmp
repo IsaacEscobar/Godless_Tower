@@ -13,7 +13,7 @@ size = Vector2(79.1789, 86.999)
 radius = 495.036
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cbakc"]
-radius = 163.028
+radius = 239.075
 
 [node name="RangeEnemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -57,15 +57,13 @@ collision_layer = 16
 shape = SubResource("CircleShape2D_cbakc")
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="EscapeTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="area_entered" from="DamageZone" to="." method="_on_damage_zone_area_entered"]
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
-[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]
 [connection signal="area_entered" from="EscapeRange" to="." method="_on_escape_range_area_entered"]
 [connection signal="area_exited" from="EscapeRange" to="." method="_on_escape_range_area_exited"]
