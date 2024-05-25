@@ -4,7 +4,7 @@ var positionOFFSET: Vector2
 	
 signal death
 
-const DAMAGE = 5
+const DAMAGE = 10
 
 var axeScene = preload("res://PlayerAxe.tscn")
 var move_speed = 300

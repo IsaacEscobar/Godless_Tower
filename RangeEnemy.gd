@@ -27,7 +27,7 @@ func shoot():
 	var fireball = fireballScene.instantiate()
 	get_tree().current_scene.add_child(fireball)
 	fireball.transform = self.transform
-	fireball.shoot(player.global_position)
+	fireball.shoot(player.global_position, self.global_position)
 	attackTimer.start()
 
 func _on_escape_range_area_entered(area):

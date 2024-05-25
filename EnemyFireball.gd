@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
-var speed = 500
+var speed = 350
 
-func shoot(playerPosition):
-	#var mouseDirection = (get_global_mouse_position() - player.global_position).normalized()
+func shoot(playerPosition, selfPosition):
+	var vectorR = Vector2()
+	vectorR = playerPosition - selfPosition
+	scale = Vector2(3,3)
 	velocity += speed * global_position.direction_to(playerPosition)
+	rotation = atan2(vectorR[1],vectorR[0])
 
 func _physics_process(delta):
-	#$Area2D/Sprite2D.rotation += 0.2
 	move_and_slide()
 
 func _on_area_2d_area_entered(area):

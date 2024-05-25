@@ -35,7 +35,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6rq2"]
-size = Vector2(61, 88)
+size = Vector2(61, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2wtq"]
 size = Vector2(49.0385, 74.0385)
@@ -65,8 +65,8 @@ show_percentage = false
 layer = -30
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 1391.0
-offset_bottom = 928.0
+offset_right = 2236.0
+offset_bottom = 1150.0
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -74,6 +74,10 @@ position = Vector2(52, 63)
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_prwse")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-55, -62)
+zoom = Vector2(0.95, 0.95)
 
 [node name="Sprite" type="Sprite2D" parent="Player"]
 position = Vector2(2, 9.53674e-07)
@@ -94,19 +98,16 @@ one_shot = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
 unique_name_in_owner = true
-collision_mask = 2
+collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-position = Vector2(-1.5, 0)
+position = Vector2(-1.5, -0.5)
 shape = SubResource("RectangleShape2D_c6rq2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1.5, -1.5)
 scale = Vector2(1.04, 1.04)
 shape = SubResource("RectangleShape2D_e2wtq")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.8, 0.8)
 
 [node name="Muro" parent="." instance=ExtResource("3_l1v15")]
 position = Vector2(237, 261)

@@ -4,25 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://cv0cd2a28l4n" path="res://EnemyFireball.png" id="2_ri74h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aflk"]
-size = Vector2(13.986, 8.85781)
+size = Vector2(12.1212, 7.45921)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmi61"]
 size = Vector2(23.6453, 13.7931)
 
 [node name="EnemyFireball" type="CharacterBody2D"]
 collision_layer = 32
-collision_mask = 13
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_dbsdt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -0.5)
+position = Vector2(-1, -1)
 scale = Vector2(2.145, 2.145)
 shape = SubResource("RectangleShape2D_1aflk")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 13
+collision_mask = 9
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, -1)

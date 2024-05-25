@@ -1,37 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3fbyyj3pr42g"]
+[gd_scene load_steps=5 format=3 uid="uid://it3wcar8c6e2"]
 
-[ext_resource type="Script" path="res://ProjectileFunctions.gd" id="1_pqpbq"]
-[ext_resource type="Texture2D" uid="uid://b1huo4uaef8fn" path="res://Axe.png" id="2_7443l"]
+[ext_resource type="Script" path="res://EnemyFireball.gd" id="1_dbsdt"]
+[ext_resource type="Texture2D" uid="uid://cv0cd2a28l4n" path="res://EnemyFireball.png" id="2_ri74h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aflk"]
-size = Vector2(19.324, 19.1142)
+size = Vector2(13.986, 8.85781)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmi61"]
-size = Vector2(35.468, 35.468)
+size = Vector2(23.6453, 13.7931)
 
-[node name="PlayerAxe" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 10
+[node name="EnemyFireball" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 9
 motion_mode = 1
-script = ExtResource("1_pqpbq")
+script = ExtResource("1_dbsdt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.275, -0.5)
+position = Vector2(-1, -0.5)
 scale = Vector2(2.145, 2.145)
 shape = SubResource("RectangleShape2D_1aflk")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 10
+collision_layer = 32
+collision_mask = 9
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, -1)
+position = Vector2(-1, -1)
 scale = Vector2(1.015, 1.015)
 shape = SubResource("RectangleShape2D_gmi61")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 position = Vector2(-1.19209e-07, -2.98023e-08)
 scale = Vector2(0.0515203, 0.0515203)
-texture = ExtResource("2_7443l")
+texture = ExtResource("2_ri74h")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
