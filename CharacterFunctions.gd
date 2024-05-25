@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var positionOFFSET: Vector2
+	
 signal death
 
 const DAMAGE = 5

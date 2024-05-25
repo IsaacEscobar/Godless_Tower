@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://54r6fsoy28aq"]
+
+[ext_resource type="Script" path="res://pause/pause.gd" id="1_241dj"]
+[ext_resource type="Shader" path="res://pause/pause.gdshader" id="1_qlhu4"]
+[ext_resource type="FontFile" uid="uid://btyam7arl522i" path="res://Cormorant-Bold.ttf" id="2_vrbe1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0f2r"]
+shader = ExtResource("1_qlhu4")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_wpg3b"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.3)
+}
+
+[sub_resource type="Animation" id="Animation_nn6t5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mdc8w"]
+_data = {
+"RESET": SubResource("Animation_nn6t5"),
+"blur": SubResource("Animation_wpg3b")
+}
+
+[node name="pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_241dj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_i0f2r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -92.5
+offset_bottom = 92.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Separador" type="Control" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeB" type="Button" parent="PanelContainer/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vrbe1")
+theme_override_font_sizes/font_size = 30
+text = "RESUME"
+
+[node name="QuitB" type="Button" parent="PanelContainer/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vrbe1")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
+[node name="Separador2" type="Control" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mdc8w")
+}
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ResumeB" to="." method="_on_resume_b_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitB" to="." method="_on_quit_b_pressed"]

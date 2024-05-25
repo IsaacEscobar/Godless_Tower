@@ -1,13 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cygn0tm7jpwhj"]
+[gd_scene load_steps=13 format=3 uid="uid://cygn0tm7jpwhj"]
 
 [ext_resource type="Script" path="res://CharacterFunctions.gd" id="1_prwse"]
 [ext_resource type="Script" path="res://MainScene.gd" id="1_rodck"]
-[ext_resource type="PackedScene" uid="uid://cr6to1fop5vqq" path="res://pause/pause_menu.tscn" id="2_3ve8d"]
 [ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="2_p1umd"]
 [ext_resource type="PackedScene" uid="uid://m2om3il4r033" path="res://Muros.tscn" id="3_l1v15"]
 [ext_resource type="PackedScene" uid="uid://bpexvensr43dv" path="res://MeleeEnemy.tscn" id="4_im81o"]
 [ext_resource type="PackedScene" uid="uid://6cascr6us76k" path="res://RangeEnemy.tscn" id="5_4jdgf"]
-[ext_resource type="AudioStream" uid="uid://dhkht3arga7gw" path="res://ost/ACSyndicate_A Gauntlet Scherzo.mp3" id="8_qb4uh"]
+[ext_resource type="PackedScene" uid="uid://54r6fsoy28aq" path="res://pause/pause.tscn" id="6_xanc7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljh1c"]
 bg_color = Color(0.72549, 0.137255, 0.168627, 1)
@@ -43,12 +42,6 @@ size = Vector2(49.0385, 74.0385)
 [node name="World" type="Node"]
 script = ExtResource("1_rodck")
 
-[node name="PauseMen" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="PauseMenu" parent="PauseMen" instance=ExtResource("2_3ve8d")]
-metadata/_edit_use_anchors_ = true
-
 [node name="LayerHUD" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="LayerHUD"]
@@ -60,6 +53,12 @@ offset_bottom = 67.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ljh1c")
 value = 100.0
 show_percentage = false
+
+[node name="PauseMenu" type="CanvasLayer" parent="LayerHUD"]
+process_mode = 2
+
+[node name="pause" parent="LayerHUD/PauseMenu" instance=ExtResource("6_xanc7")]
+process_mode = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -30
@@ -122,12 +121,6 @@ position = Vector2(945, 417)
 
 [node name="RangeEnemy" parent="." instance=ExtResource("5_4jdgf")]
 position = Vector2(464, 243)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_qb4uh")
-autoplay = true
-
-[node name="Background" type="CanvasLayer" parent="."]
 
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]
