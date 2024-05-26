@@ -91,7 +91,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ljh1c")
 value = 100.0
 show_percentage = false
 
-[node name="Puntuacion" type="Label" parent="LayerHUD"]
+[node name="Score" type="Label" parent="LayerHUD"]
 offset_left = 311.0
 offset_top = 18.0
 offset_right = 496.0
@@ -99,11 +99,10 @@ offset_bottom = 63.0
 theme_override_fonts/font = SubResource("FontFile_ow2b5")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5dskw")
-text = "Puntuación "
+text = "Score"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -30
-follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

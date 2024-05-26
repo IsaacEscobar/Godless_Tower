@@ -8,5 +8,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Puntuacion.text = "Puntuación: " + str(global_var.puntos)
+	$Score.text = "Score: " + str(global_var.puntos)
 	pass
