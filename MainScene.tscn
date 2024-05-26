@@ -63,10 +63,14 @@ show_percentage = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -30
+follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 2236.0
-offset_bottom = 1150.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -95,6 +99,7 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="Player"]
 one_shot = true
+autostart = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
 unique_name_in_owner = true

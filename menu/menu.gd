@@ -6,6 +6,7 @@ extends Control
 @onready var start_level = preload("res://MainScene.tscn") as PackedScene
 
 func _ready():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	button_start.button_down.connect(on_start_pressed)
 	button_exit.button_down.connect(on_exit_pressed)
 

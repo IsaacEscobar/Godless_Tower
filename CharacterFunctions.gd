@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
 var positionOFFSET: Vector2
-	
-signal death
 
 const DAMAGE = 10
 
@@ -51,8 +49,8 @@ func _physics_process(delta):
 	health -= DAMAGE * enemiesHitting * delta
 	%HealthBar.value = health
 	if health <= 0:
-		death.emit()
-		queue_free()
+		get_tree().change_scene_to_file("res://menu/menu.tscn")
+		pass
 	get_movement_input()
 	move_and_slide()
 	if Input.is_action_pressed("shoot") and attackCD.is_stopped():
