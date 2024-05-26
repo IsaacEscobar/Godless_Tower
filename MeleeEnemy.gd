@@ -27,4 +27,5 @@ func _on_damage_zone_area_entered(area):
 	health -= 5
 	pursueTimer.start()
 	if health <= 0:
+		global_var.puntos += 5
 		queue_free()

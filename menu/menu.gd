@@ -11,6 +11,7 @@ func _ready():
 	button_exit.button_down.connect(on_exit_pressed)
 
 func on_start_pressed() -> void:
+	global_var.puntos = 0
 	get_tree().change_scene_to_packed(start_level)
 	
 func on_exit_pressed() -> void:

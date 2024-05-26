@@ -8,6 +8,7 @@ var onSight = false
 var health = 20
 var attackTimer
 var escapeTimer
+var puntos
 
 func _ready():
 	attackTimer = $AttackTimer
@@ -40,6 +41,7 @@ func _on_damage_zone_area_entered(area):
 	health -= 5
 	escapeTimer.start()
 	if health <= 0:
+		global_var.puntos += 10
 		queue_free()
 
 func _on_attack_range_area_entered(area):

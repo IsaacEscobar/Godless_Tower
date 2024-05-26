@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cygn0tm7jpwhj"]
+[gd_scene load_steps=17 format=3 uid="uid://cygn0tm7jpwhj"]
 
 [ext_resource type="Script" path="res://CharacterFunctions.gd" id="1_prwse"]
 [ext_resource type="Script" path="res://MainScene.gd" id="1_rodck"]
 [ext_resource type="PackedScene" uid="uid://cr6to1fop5vqq" path="res://pause/pause_menu.tscn" id="2_3ve8d"]
 [ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="2_p1umd"]
+[ext_resource type="Script" path="res://LayerHUD.gd" id="3_j34gv"]
 [ext_resource type="PackedScene" uid="uid://m2om3il4r033" path="res://Muros.tscn" id="3_l1v15"]
 [ext_resource type="PackedScene" uid="uid://bpexvensr43dv" path="res://MeleeEnemy.tscn" id="4_im81o"]
 [ext_resource type="PackedScene" uid="uid://6cascr6us76k" path="res://RangeEnemy.tscn" id="5_4jdgf"]
@@ -11,6 +12,34 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljh1c"]
 bg_color = Color(0.72549, 0.137255, 0.168627, 1)
+
+[sub_resource type="FontFile" id="FontFile_ow2b5"]
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+cache/0/28/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/28/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dskw"]
 
 [sub_resource type="Animation" id="Animation_kh6ca"]
 resource_name = "Walking"
@@ -50,6 +79,7 @@ process_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="LayerHUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_j34gv")
 
 [node name="HealthBar" type="ProgressBar" parent="LayerHUD"]
 unique_name_in_owner = true
@@ -60,6 +90,16 @@ offset_bottom = 67.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ljh1c")
 value = 100.0
 show_percentage = false
+
+[node name="Puntuacion" type="Label" parent="LayerHUD"]
+offset_left = 311.0
+offset_top = 18.0
+offset_right = 496.0
+offset_bottom = 63.0
+theme_override_fonts/font = SubResource("FontFile_ow2b5")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5dskw")
+text = "Puntuación "
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -30

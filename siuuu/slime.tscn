@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dvgfmy6vtvjji" path="res://siuuu/slime_body.png" id="1_3j35h"]
 [ext_resource type="Script" path="res://siuuu/slime.gd" id="1_87y5x"]
-[ext_resource type="Texture2D" path="res://siuuu/ground_shadow.png" id="1_cq7ej"]
+[ext_resource type="Texture2D" uid="uid://bugp8cwmh7uvq" path="res://siuuu/ground_shadow.png" id="1_cq7ej"]
 [ext_resource type="Texture2D" uid="uid://c078jrp2yvc4s" path="res://siuuu/slime_face.png" id="2_ygydt"]
 [ext_resource type="Texture2D" uid="uid://btbxea1f3vwot" path="res://siuuu/slime_body_hurt.png" id="4_0qu0c"]
 [ext_resource type="Texture2D" uid="uid://cai2ijnbypqtr" path="res://siuuu/slime_hurt_eyes.png" id="4_hi70h"]
