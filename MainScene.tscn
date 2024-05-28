@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cygn0tm7jpwhj"]
+[gd_scene load_steps=16 format=3 uid="uid://cygn0tm7jpwhj"]
 
 [ext_resource type="Script" path="res://CharacterFunctions.gd" id="1_prwse"]
 [ext_resource type="Script" path="res://MainScene.gd" id="1_rodck"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="2_p1umd"]
 [ext_resource type="Script" path="res://LayerHUD.gd" id="3_j34gv"]
 [ext_resource type="PackedScene" uid="uid://m2om3il4r033" path="res://Muros.tscn" id="3_l1v15"]
-[ext_resource type="PackedScene" uid="uid://bpexvensr43dv" path="res://MeleeEnemy.tscn" id="4_im81o"]
-[ext_resource type="PackedScene" uid="uid://6cascr6us76k" path="res://RangeEnemy.tscn" id="5_4jdgf"]
 [ext_resource type="AudioStream" uid="uid://dhkht3arga7gw" path="res://ost/ACSyndicate_A Gauntlet Scherzo.mp3" id="8_qb4uh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljh1c"]
@@ -69,6 +67,12 @@ size = Vector2(61, 87)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2wtq"]
 size = Vector2(49.0385, 74.0385)
 
+[sub_resource type="Curve2D" id="Curve2D_kq5da"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -51, -94, 0, 0, 0, 0, 1246, -95, 0, 0, 0, 0, 1247, 691, 0, 0, 0, 0, -52, 692, 0, 0, 0, 0, -51, -94)
+}
+point_count = 5
+
 [node name="World" type="Node"]
 script = ExtResource("1_rodck")
 
@@ -113,7 +117,7 @@ grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(52, 63)
+position = Vector2(540, 300)
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_prwse")
@@ -153,20 +157,20 @@ position = Vector2(-1.5, -1.5)
 scale = Vector2(1.04, 1.04)
 shape = SubResource("RectangleShape2D_e2wtq")
 
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-540, -300)
+curve = SubResource("Curve2D_kq5da")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-51, -94)
+rotation = -0.00077101
+
 [node name="Muro" parent="." instance=ExtResource("3_l1v15")]
 position = Vector2(237, 261)
 
 [node name="Muro2" parent="." instance=ExtResource("3_l1v15")]
 position = Vector2(738, 255)
-
-[node name="MeleeEnemy" parent="." instance=ExtResource("4_im81o")]
-position = Vector2(941, 91)
-
-[node name="MeleeEnemy2" parent="." instance=ExtResource("4_im81o")]
-position = Vector2(945, 417)
-
-[node name="RangeEnemy" parent="." instance=ExtResource("5_4jdgf")]
-position = Vector2(464, 243)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_qb4uh")
@@ -174,5 +178,10 @@ autoplay = true
 
 [node name="Background" type="CanvasLayer" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
