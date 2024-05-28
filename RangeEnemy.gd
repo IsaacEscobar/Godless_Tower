@@ -20,7 +20,7 @@ func _physics_process(delta):
 		velocity = -direction * 200.0
 	else:
 		velocity = Vector2(0.0,0.0)
-	if onSight and attackTimer.is_stopped():
+	if attackTimer.is_stopped():
 		shoot()
 	move_and_slide()
 	
@@ -39,7 +39,7 @@ func _on_escape_range_area_exited(area):
 
 func _on_damage_zone_area_entered(area):
 	health -= 5
-	escapeTimer.start()
+	#escapeTimer.start()
 	if health <= 0:
 		global_var.puntos += 10
 		queue_free()

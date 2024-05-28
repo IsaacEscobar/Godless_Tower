@@ -8,35 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://m2om3il4r033" path="res://Muros.tscn" id="3_l1v15"]
 [ext_resource type="FontFile" uid="uid://b68lvfduw55qi" path="res://OptimusPrinceps.ttf" id="8_j7u1p"]
 [ext_resource type="AudioStream" uid="uid://dhkht3arga7gw" path="res://ost/ACSyndicate_A Gauntlet Scherzo.mp3" id="8_qb4uh"]
+[ext_resource type="FontFile" uid="uid://btyam7arl522i" path="res://Cormorant-Bold.ttf" id="9_yv64q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljh1c"]
 bg_color = Color(0.72549, 0.137255, 0.168627, 1)
-
-[sub_resource type="FontFile" id="FontFile_ow2b5"]
-cache/0/32/0/ascent = 0.0
-cache/0/32/0/descent = 0.0
-cache/0/32/0/underline_position = 0.0
-cache/0/32/0/underline_thickness = 0.0
-cache/0/32/0/scale = 1.0
-cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
-cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/32/0/kerning_overrides/28/0 = Vector2(0, 0)
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/28/0 = Vector2(0, 0)
-cache/0/28/0/ascent = 0.0
-cache/0/28/0/descent = 0.0
-cache/0/28/0/underline_position = 0.0
-cache/0/28/0/underline_thickness = 0.0
-cache/0/28/0/scale = 1.0
-cache/0/28/0/kerning_overrides/32/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/28/0 = Vector2(0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dskw"]
 
@@ -101,8 +76,8 @@ offset_left = 311.0
 offset_top = 18.0
 offset_right = 496.0
 offset_bottom = 63.0
-theme_override_fonts/font = SubResource("FontFile_ow2b5")
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("9_yv64q")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5dskw")
 text = "Score"
 
@@ -211,7 +186,41 @@ theme_override_fonts/font = ExtResource("8_j7u1p")
 theme_override_font_sizes/font_size = 150
 text = "YOU DIED"
 
+[node name="PanelContainer" type="PanelContainer" parent="GameOver"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 426.0
+offset_top = 85.0
+offset_right = -418.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/PanelContainer"]
+layout_mode = 2
+
+[node name="Separador" type="Control" parent="GameOver/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FinalScore" type="Label" parent="GameOver/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_yv64q")
+theme_override_font_sizes/font_size = 50
+text = "Your Final Score:"
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Button" parent="GameOver/PanelContainer/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_yv64q")
+theme_override_font_sizes/font_size = 35
+text = "Exit"
+
 [connection signal="gameover" from="Player" to="." method="_on_player_gameover"]
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOver/PanelContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
