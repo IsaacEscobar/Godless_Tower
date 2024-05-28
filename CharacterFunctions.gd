@@ -11,6 +11,8 @@ var enemiesHitting = 0
 var animation_player
 var attackCD
 
+signal gameover
+
 func _ready():
 	animation_player = $AnimationPlayer
 	attackCD = $Timer
@@ -49,8 +51,7 @@ func _physics_process(delta):
 	health -= DAMAGE * enemiesHitting * delta
 	%HealthBar.value = health
 	if health <= 0:
-		get_tree().change_scene_to_file("res://menu/menu.tscn")
-		pass
+		gameover.emit()
 	get_movement_input()
 	move_and_slide()
 	if Input.is_action_pressed("shoot") and attackCD.is_stopped():

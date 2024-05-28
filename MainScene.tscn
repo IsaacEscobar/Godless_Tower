@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cygn0tm7jpwhj"]
+[gd_scene load_steps=17 format=3 uid="uid://cygn0tm7jpwhj"]
 
 [ext_resource type="Script" path="res://CharacterFunctions.gd" id="1_prwse"]
 [ext_resource type="Script" path="res://MainScene.gd" id="1_rodck"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="2_p1umd"]
 [ext_resource type="Script" path="res://LayerHUD.gd" id="3_j34gv"]
 [ext_resource type="PackedScene" uid="uid://m2om3il4r033" path="res://Muros.tscn" id="3_l1v15"]
+[ext_resource type="FontFile" uid="uid://b68lvfduw55qi" path="res://OptimusPrinceps.ttf" id="8_j7u1p"]
 [ext_resource type="AudioStream" uid="uid://dhkht3arga7gw" path="res://ost/ACSyndicate_A Gauntlet Scherzo.mp3" id="8_qb4uh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljh1c"]
@@ -69,7 +70,7 @@ size = Vector2(49.0385, 74.0385)
 
 [sub_resource type="Curve2D" id="Curve2D_kq5da"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -51, -94, 0, 0, 0, 0, 1246, -95, 0, 0, 0, 0, 1247, 691, 0, 0, 0, 0, -52, 692, 0, 0, 0, 0, -51, -94)
+"points": PackedVector2Array(0, 0, 0, 0, -115, -160, 0, 0, 0, 0, 1277, -160, 0, 0, 0, 0, 1279, 766, 0, 0, 0, 0, -115, 766, 0, 0, 0, 0, -115, -158)
 }
 point_count = 5
 
@@ -163,8 +164,7 @@ curve = SubResource("Curve2D_kq5da")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
-position = Vector2(-51, -94)
-rotation = -0.00077101
+position = Vector2(-115, -160)
 
 [node name="Muro" parent="." instance=ExtResource("3_l1v15")]
 position = Vector2(237, 261)
@@ -179,9 +179,39 @@ autoplay = true
 [node name="Background" type="CanvasLayer" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 autostart = true
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.631373)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -11.5
+offset_right = 38.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_j7u1p")
+theme_override_font_sizes/font_size = 150
+text = "YOU DIED"
+
+[connection signal="gameover" from="Player" to="." method="_on_player_gameover"]
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

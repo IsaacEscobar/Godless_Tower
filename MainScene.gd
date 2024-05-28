@@ -21,3 +21,8 @@ func spawn_range_enemy():
 func _on_timer_timeout():
 	spawn_melee_enemy()
 	spawn_range_enemy()
+
+
+func _on_player_gameover():
+	%GameOver.visible = true
+	get_tree().paused = true
