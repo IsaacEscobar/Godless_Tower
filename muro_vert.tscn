@@ -1,24 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://m2om3il4r033"]
+[gd_scene load_steps=4 format=3 uid="uid://bha1pcjmt71tl"]
 
-[ext_resource type="Texture2D" uid="uid://cxjcnyvjj4l2s" path="res://wall.png" id="1_d4rik"]
+[ext_resource type="Texture2D" uid="uid://ixvk5onxn861" path="res://wallV.png" id="1_nmb1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6r5v6"]
-size = Vector2(199, 127)
+size = Vector2(73, 131)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylq8x"]
-size = Vector2(220, 157)
+size = Vector2(89, 155)
 
-[node name="Muro" type="StaticBody2D"]
+[node name="MuroVert" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 7
 
 [node name="Wall" type="Sprite2D" parent="."]
 position = Vector2(-3.57628e-07, -1.90735e-06)
 scale = Vector2(0.978992, 0.787736)
-texture = ExtResource("1_d4rik")
+texture = ExtResource("1_nmb1l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 3.5)
+position = Vector2(1.5, 5.5)
 shape = SubResource("RectangleShape2D_6r5v6")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -26,5 +26,5 @@ collision_layer = 8
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 0.5)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ylq8x")

@@ -1,14 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://cygn0tm7jpwhj"]
+[gd_scene load_steps=24 format=3 uid="uid://cygn0tm7jpwhj"]
 
 [ext_resource type="Script" path="res://CharacterFunctions.gd" id="1_prwse"]
 [ext_resource type="Script" path="res://MainScene.gd" id="1_rodck"]
 [ext_resource type="PackedScene" uid="uid://cr6to1fop5vqq" path="res://pause/pause_menu.tscn" id="2_3ve8d"]
+[ext_resource type="Texture2D" uid="uid://dba6hnd02x17g" path="res://groundFloor.jpg" id="2_kn3ik"]
 [ext_resource type="Texture2D" uid="uid://c3duxq8mlgmpa" path="res://Character-SpriteSheet.png" id="2_p1umd"]
+[ext_resource type="Texture2D" uid="uid://4buequnc0dhm" path="res://GraveyardBack4.jpg" id="3_d6tn6"]
 [ext_resource type="Script" path="res://LayerHUD.gd" id="3_j34gv"]
 [ext_resource type="PackedScene" uid="uid://m2om3il4r033" path="res://Muros.tscn" id="3_l1v15"]
+[ext_resource type="Texture2D" uid="uid://b3pvwl7jqem4" path="res://GraveyardBack5.jpg" id="4_10uja"]
 [ext_resource type="FontFile" uid="uid://b68lvfduw55qi" path="res://OptimusPrinceps.ttf" id="8_j7u1p"]
 [ext_resource type="AudioStream" uid="uid://dhkht3arga7gw" path="res://ost/ACSyndicate_A Gauntlet Scherzo.mp3" id="8_qb4uh"]
+[ext_resource type="PackedScene" uid="uid://bha1pcjmt71tl" path="res://muro_vert.tscn" id="8_u4y6e"]
 [ext_resource type="FontFile" uid="uid://btyam7arl522i" path="res://Cormorant-Bold.ttf" id="9_yv64q"]
+[ext_resource type="Texture2D" uid="uid://doik4060hgq2" path="res://GraveyardBack1.jpg" id="12_3tryh"]
+[ext_resource type="Texture2D" uid="uid://8uj6p53pqje7" path="res://GraveyardBack3.jpg" id="12_cvk8j"]
+[ext_resource type="Texture2D" uid="uid://gv5etveqq1bl" path="res://GraveyardBack2.jpg" id="12_uxd7e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljh1c"]
 bg_color = Color(0.72549, 0.137255, 0.168627, 1)
@@ -52,6 +59,168 @@ point_count = 5
 [node name="World" type="Node"]
 script = ExtResource("1_rodck")
 
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="Floor8" type="Sprite2D" parent="Floors"]
+position = Vector2(498, 756)
+scale = Vector2(0.999996, 1.16986)
+texture = ExtResource("2_kn3ik")
+
+[node name="Floor7" type="Sprite2D" parent="Floors"]
+position = Vector2(-485, 799)
+scale = Vector2(0.999998, 1.0816)
+texture = ExtResource("2_kn3ik")
+
+[node name="Floor5" type="Sprite2D" parent="Floors"]
+position = Vector2(475, 405.337)
+scale = Vector2(0.999995, 1.21665)
+texture = ExtResource("2_kn3ik")
+
+[node name="Floor6" type="Sprite2D" parent="Floors"]
+position = Vector2(-469, 415.211)
+scale = Vector2(0.999996, 1.16986)
+texture = ExtResource("2_kn3ik")
+
+[node name="Floor3" type="Sprite2D" parent="Floors"]
+position = Vector2(475, -145.472)
+scale = Vector2(0.999997, 1.12486)
+texture = ExtResource("2_kn3ik")
+
+[node name="Floor4" type="Sprite2D" parent="Floors"]
+position = Vector2(-469, -138)
+scale = Vector2(0.999998, 1.0816)
+texture = ExtResource("2_kn3ik")
+
+[node name="Floor2" type="Sprite2D" parent="Floors"]
+position = Vector2(475, -671)
+scale = Vector2(0.999998, 1.0816)
+texture = ExtResource("2_kn3ik")
+
+[node name="Floor" type="Sprite2D" parent="Floors"]
+position = Vector2(-470, -666)
+scale = Vector2(0.999999, 1.04)
+texture = ExtResource("2_kn3ik")
+
+[node name="GraveyardDown" type="Node2D" parent="."]
+
+[node name="GRBG3" type="Sprite2D" parent="GraveyardDown"]
+position = Vector2(302, 1318)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("3_d6tn6")
+
+[node name="GRBG6" type="Sprite2D" parent="GraveyardDown"]
+position = Vector2(839, 1347)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("4_10uja")
+flip_h = true
+
+[node name="GRBG4" type="Sprite2D" parent="GraveyardDown"]
+position = Vector2(-268, 1354)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("4_10uja")
+flip_h = true
+
+[node name="GRBG5" type="Sprite2D" parent="GraveyardDown"]
+position = Vector2(-843, 1314)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("3_d6tn6")
+flip_h = true
+
+[node name="GRBG2" type="Sprite2D" parent="GraveyardDown"]
+position = Vector2(1440, 1225)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("12_cvk8j")
+flip_h = true
+
+[node name="GRBG1" type="Sprite2D" parent="GraveyardDown"]
+position = Vector2(-1435, 1224)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("12_cvk8j")
+
+[node name="GraveyardUp" type="Node2D" parent="."]
+
+[node name="GRBG3" type="Sprite2D" parent="GraveyardUp"]
+position = Vector2(302, -1324)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("3_d6tn6")
+
+[node name="GRBG6" type="Sprite2D" parent="GraveyardUp"]
+position = Vector2(822, -1346)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("4_10uja")
+flip_h = true
+
+[node name="GRBG4" type="Sprite2D" parent="GraveyardUp"]
+position = Vector2(-269, -1349)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("4_10uja")
+flip_h = true
+
+[node name="GRBG5" type="Sprite2D" parent="GraveyardUp"]
+position = Vector2(-844, -1321)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("3_d6tn6")
+flip_h = true
+
+[node name="GRBG2" type="Sprite2D" parent="GraveyardUp"]
+position = Vector2(1423, -1290)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("12_cvk8j")
+flip_h = true
+
+[node name="GRBG1" type="Sprite2D" parent="GraveyardUp"]
+position = Vector2(-1438, -1298)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("12_cvk8j")
+
+[node name="GraveyardRight" type="Node2D" parent="."]
+
+[node name="GRBG3" type="Sprite2D" parent="GraveyardRight"]
+position = Vector2(1392.45, 326.15)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("12_uxd7e")
+
+[node name="GRBG4" type="Sprite2D" parent="GraveyardRight"]
+position = Vector2(1393.45, 790.15)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("12_3tryh")
+flip_h = true
+
+[node name="GRBG2" type="Sprite2D" parent="GraveyardRight"]
+position = Vector2(1392.45, -227.85)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("12_3tryh")
+flip_h = true
+
+[node name="GRBG1" type="Sprite2D" parent="GraveyardRight"]
+position = Vector2(1390.45, -783.85)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("12_uxd7e")
+
+[node name="GraveyardLeft" type="Node2D" parent="."]
+
+[node name="GRBG3" type="Sprite2D" parent="GraveyardLeft"]
+position = Vector2(-1386, 326)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("12_3tryh")
+
+[node name="GRBG4" type="Sprite2D" parent="GraveyardLeft"]
+position = Vector2(-1391, 790)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("12_uxd7e")
+flip_h = true
+
+[node name="GRBG2" type="Sprite2D" parent="GraveyardLeft"]
+position = Vector2(-1389, -228)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("12_uxd7e")
+flip_h = true
+
+[node name="GRBG1" type="Sprite2D" parent="GraveyardLeft"]
+position = Vector2(-1389, -784)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("12_3tryh")
+
 [node name="PauseMen" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -83,8 +252,10 @@ text = "Score"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -30
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -93,14 +264,13 @@ grow_vertical = 2
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(540, 300)
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_prwse")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-55, -62)
-zoom = Vector2(0.95, 0.95)
+zoom = Vector2(0.9, 0.9)
 
 [node name="Sprite" type="Sprite2D" parent="Player"]
 position = Vector2(2, 9.53674e-07)
@@ -117,6 +287,7 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="Player"]
+wait_time = 0.5
 one_shot = true
 autostart = true
 
@@ -140,12 +311,6 @@ curve = SubResource("Curve2D_kq5da")
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
 position = Vector2(-115, -160)
-
-[node name="Muro" parent="." instance=ExtResource("3_l1v15")]
-position = Vector2(237, 261)
-
-[node name="Muro2" parent="." instance=ExtResource("3_l1v15")]
-position = Vector2(738, 255)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_qb4uh")
@@ -218,6 +383,157 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yv64q")
 theme_override_font_sizes/font_size = 35
 text = "Exit"
+
+[node name="MuroObs1" parent="." instance=ExtResource("3_l1v15")]
+position = Vector2(-450, -368)
+
+[node name="MuroObs2" parent="." instance=ExtResource("3_l1v15")]
+position = Vector2(514, 8)
+
+[node name="MuroObs3" parent="." instance=ExtResource("3_l1v15")]
+position = Vector2(-183, 629)
+
+[node name="MurosMitad1" type="Node2D" parent="."]
+
+[node name="MuroSup1" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(61, -1000)
+
+[node name="MuroSup5" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(-933, -1000)
+
+[node name="MuroSup6" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(-718, -1000)
+
+[node name="MuroSup7" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(-499, -1000)
+
+[node name="MuroSup8" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(-281, -1000)
+
+[node name="MuroSup10" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(-61, -1000)
+
+[node name="MuroSup2" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(277, -1000)
+
+[node name="MuroSup3" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(496, -1000)
+
+[node name="MuroSup4" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(714, -1000)
+
+[node name="MuroSup9" parent="MurosMitad1" instance=ExtResource("3_l1v15")]
+position = Vector2(934, -1000)
+
+[node name="MuroVertDer1" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, 0)
+
+[node name="MuroVertDer5" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, -618)
+
+[node name="MuroVertDer6" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, -929)
+
+[node name="MuroVertDer8" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, -773)
+
+[node name="MuroVertDer3" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, -311)
+
+[node name="MuroVertDer4" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, -466)
+
+[node name="MuroVertDer2" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, -155)
+
+[node name="MuroVertIzq1" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, 0)
+
+[node name="MuroVertIzq3" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, -309)
+
+[node name="MuroVertIzq5" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, -775)
+
+[node name="MuroVertIzq6" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, -930)
+
+[node name="MuroVertIzq7" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, -621)
+
+[node name="MuroVertIzq4" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, -464)
+
+[node name="MuroVertIzq2" parent="MurosMitad1" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, -155)
+
+[node name="MurosMitad2" type="Node2D" parent="."]
+
+[node name="MuroSup1" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(75, 1000)
+
+[node name="MuroSup5" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(-933, 1000)
+
+[node name="MuroSup6" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(-717, 1000)
+
+[node name="MuroSup7" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(-498, 1000)
+
+[node name="MuroSup8" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(-280, 1000)
+
+[node name="MuroSup10" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(-60, 1000)
+
+[node name="MuroSup2" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(291, 1000)
+
+[node name="MuroSup3" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(510, 1000)
+
+[node name="MuroSup4" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(728, 1000)
+
+[node name="MuroSup9" parent="MurosMitad2" instance=ExtResource("3_l1v15")]
+position = Vector2(936, 1000)
+
+[node name="MuroVertDer1" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, 928)
+
+[node name="MuroVertDer5" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, 310)
+
+[node name="MuroVertDer8" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, 155)
+
+[node name="MuroVertDer3" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, 617)
+
+[node name="MuroVertDer4" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, 462)
+
+[node name="MuroVertDer2" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(1000, 773)
+
+[node name="MuroVertIzq1" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, 930)
+
+[node name="MuroVertIzq3" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, 621)
+
+[node name="MuroVertIzq5" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, 155)
+
+[node name="MuroVertIzq7" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, 309)
+
+[node name="MuroVertIzq4" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, 466)
+
+[node name="MuroVertIzq2" parent="MurosMitad2" instance=ExtResource("8_u4y6e")]
+position = Vector2(-1000, 775)
 
 [connection signal="gameover" from="Player" to="." method="_on_player_gameover"]
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]

@@ -5,7 +5,7 @@ var fireballScene = preload("res://EnemyFireball.tscn")
 
 var onEscapeRange = false
 var onSight = false
-var health = 20
+var health = 10
 var attackTimer
 var escapeTimer
 var puntos

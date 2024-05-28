@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 var positionOFFSET: Vector2
 
-const DAMAGE = 10
+const DAMAGE = 7
 
 var axeScene = preload("res://PlayerAxe.tscn")
 var move_speed = 300
 var health = 100
 var enemiesHitting = 0
+var fireBall = 0
 var animation_player
 var attackCD
 
@@ -48,7 +49,7 @@ func shoot(delta):
 	attackCD.start()
 	
 func _physics_process(delta):
-	health -= DAMAGE * enemiesHitting * delta
+	health -= DAMAGE * ((enemiesHitting * delta) + fireBall)
 	%HealthBar.value = health
 	if health <= 0:
 		gameover.emit()
@@ -59,7 +60,13 @@ func _physics_process(delta):
 	
 
 func _on_area_2d_area_entered(area):
-	enemiesHitting += 1
+	if area.name == "Area2D":
+		fireBall += 1
+	else:
+		enemiesHitting += 1
 
 func _on_area_2d_area_exited(area):
-	enemiesHitting -= 1
+	if area.name == "Area2D":
+		fireBall -= 1
+	else:
+		enemiesHitting -= 1

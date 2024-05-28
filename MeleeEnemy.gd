@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var player = get_node("/root/World/Player")
 
 var onSight = false
-var health = 40
+var health = 10
 var pursueTimer
 
 func _ready():
