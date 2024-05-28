@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd03wjplwm3jb"]
+
+[ext_resource type="Script" path="res://MeleeEnemy.gd" id="1_erquc"]
+[ext_resource type="Texture2D" uid="uid://ev47ax5nn63i" path="res://Skeleton.png" id="2_lwwwn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d6bse"]
+radius = 60.25
+height = 147.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkxlw"]
+radius = 66.9599
+height = 166.178
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crbn4"]
+radius = 295.002
+
+[node name="Skeleton" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+collision_mask = 15
+motion_mode = 1
+script = ExtResource("1_erquc")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lwwwn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 4)
+shape = SubResource("CapsuleShape2D_d6bse")
+
+[node name="DamageZone" type="Area2D" parent="."]
+scale = Vector2(1.1, 1.1)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+position = Vector2(-0.90909, 2.27272)
+scale = Vector2(0.93, 0.93)
+shape = SubResource("CapsuleShape2D_tkxlw")
+
+[node name="AttackRange" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_crbn4")
+
+[node name="PursueTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="DamageZone" to="." method="_on_damage_zone_area_entered"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited"]

@@ -9,7 +9,12 @@ func _ready():
 	deathTimer = $GameOver/DeathTimer
 
 func spawn_melee_enemy():
-	var new_mob = preload("res://MeleeEnemy.tscn").instantiate()
+	var x = randf()
+	var new_mob
+	if x > 0.5:
+		new_mob = preload("res://MeleeEnemy.tscn").instantiate()
+	else:
+		new_mob = preload("res://skeleton.tscn").instantiate()
 	%PathFollow2D.progress_ratio = randf()
 	while %PathFollow2D.global_position[0] > 900 or %PathFollow2D.global_position[0] < -900 or  %PathFollow2D.global_position[1] > 900 or %PathFollow2D.global_position[1] < -900:
 		%PathFollow2D.progress_ratio = randf()
